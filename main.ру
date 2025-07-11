@@ -43,9 +43,3 @@ def webhook():
 @app.route("/", methods=["GET"])
 def root():
     return "Bot is working", 200
-
-# Запуск приложения (используется при отладке)
-if __name__ == "__main__":
-    app.run()
-
-# commit for Render redeploy
