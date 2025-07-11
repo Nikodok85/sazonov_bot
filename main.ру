@@ -1,7 +1,7 @@
 from flask import Flask, request
 import telebot
 
-TOKEN = "6386592043:AAGkr2SqqoXezvTZXjDjUtlwL2JEl9-BLD8A"
+TOKEN = "8027662725:AAHd6lKQZhaqQp_MqYGhmztUVAcQF24XC3E"
 CHANNEL_ID = "@gynekolog_Sazonov"
 
 bot = telebot.TeleBot(TOKEN)
