@@ -1,14 +1,14 @@
 from flask import Flask, request
 import telebot
 
-app = Flask(__name__)  # это должен быть ОДИН раз
+app = Flask(__name__)
 
 TOKEN = "8027662725:AAHd6lKQZhaqQp_MqYGhmztUVAcQF24XC3E"
 CHANNEL_ID = "@gynekolog_Sazonov"
 
 bot = telebot.TeleBot(TOKEN)
 
-# /start
+# Команда /start
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
     markup = telebot.types.ReplyKeyboardMarkup(resize_keyboard=True)
@@ -19,12 +19,12 @@ def send_welcome(message):
         reply_markup=markup
     )
 
-# Обработка кнопки
+# Кнопка "Задать вопрос"
 @bot.message_handler(func=lambda message: message.text == "🟢 Задать вопрос")
 def ask_question(message):
     bot.send_message(message.chat.id, "✍️ Напиши свой вопрос — я получу его анонимно и опубликую с ответом в канале.")
 
-# Обработка любого текста
+# Любой текст — пересылается в канал
 @bot.message_handler(func=lambda message: True, content_types=['text'])
 def forward_to_channel(message):
     if message.text != "🟢 Задать вопрос":
@@ -39,7 +39,7 @@ def webhook():
     bot.process_new_updates([update])
     return "OK", 200
 
-# Health check
+# Проверка на главной странице
 @app.route("/", methods=["GET"])
 def index():
     return "Бот работает!", 200
