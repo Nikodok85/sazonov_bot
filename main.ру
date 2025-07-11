@@ -47,3 +47,5 @@ def root():
 # Запуск приложения (используется при отладке)
 if __name__ == "__main__":
     app.run()
+
+# commit for Render redeploy
