@@ -19,6 +19,10 @@ def send_welcome(message):
         reply_markup=markup
     )
 
+@bot.message_handler(commands=['start'])
+def start(message):
+    bot.send_message(message.chat.id, "👋 Привет! Напиши сюда свой вопрос, и я анонимно передам его в канал.")
+
 # Кнопка "Задать вопрос"
 @bot.message_handler(func=lambda message: message.text == "🟢 Задать вопрос")
 def ask_question(message):
