@@ -31,8 +31,12 @@ def ask_question(message):
 @bot.message_handler(content_types=['text'])
 def forward_to_channel(message):
     if message.text != "/start":
-        bot.send_message(CHANNEL_ID, f"❓ Анонимный вопрос:\n\n{message.text}")
-        bot.send_message(message.chat.id, "✅ Вопрос получен! Ждите ответ в канале.")
+        try:
+            print(f"📤 Пытаемся отправить в канал: {message.text}")
+            bot.send_message(CHANNEL_ID, f"❓ Анонимный вопрос:\n\n{message.text}")
+            bot.send_message(message.chat.id, "✅ Вопрос получен! Ждите ответ в канале.")
+        except Exception as e:
+            print(f"⚠️ Ошибка при отправке в канал: {e}")
 
 @app.route('/', methods=['POST'])
 def webhook():
