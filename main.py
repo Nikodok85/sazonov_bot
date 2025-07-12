@@ -2,10 +2,15 @@ from flask import Flask, request
 import telebot
 import os
 
-TOKEN = os.environ.get("TOKEN")  # Получаем токен из переменных окружения
+TOKEN = os.environ.get("TOKEN")
 CHANNEL_ID = -1006940287840
 
 bot = telebot.TeleBot(TOKEN)
+
+WEBHOOK_URL = "https://sazonov-bot.onrender.com"
+bot.remove_webhook()
+bot.set_webhook(url=WEBHOOK_URL)
+
 app = Flask(__name__)
 
 @bot.message_handler(commands=['start'])
