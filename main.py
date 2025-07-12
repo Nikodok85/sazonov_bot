@@ -4,7 +4,7 @@ import telebot
 app = Flask(__name__)  # это должен быть ОДИН раз
 
 TOKEN = "8027662725:AAHd6lKQZhaqQp_MqYGhmztUVAcQF24XC3E"
-CHANNEL_ID = "@gynekolog_Sazonov"
+CHANNEL_ID = "-1006940287840"
 
 bot = telebot.TeleBot(TOKEN)
 
