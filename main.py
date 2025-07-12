@@ -8,8 +8,6 @@ CHANNEL_ID = -1006940287840
 bot = telebot.TeleBot(TOKEN)
 
 WEBHOOK_URL = "https://sazonov-bot.onrender.com"
-bot.remove_webhook()
-bot.set_webhook(url=WEBHOOK_URL)
 
 app = Flask(__name__)
 
