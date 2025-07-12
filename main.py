@@ -45,5 +45,6 @@ def webhook():
 def index():
     return 'Бот работает!', 200
 
-if __name__ == "__main__":
+if __name__ == '__main__':
+    print("Бот запущен!")  # <-- ДОБАВЬ ЭТУ СТРОКУ
     app.run(host="0.0.0.0", port=5000)
