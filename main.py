@@ -21,3 +21,8 @@ def webhook():
 @app.route('/', methods=['GET'])
 def index():
     return "Bot is alive", 200
+
+if __name__ == "__main__":
+    bot.remove_webhook()
+    bot.set_webhook(url="https://sazonov-bot.onrender.com")
+    app.run(host="0.0.0.0", port=10000)
