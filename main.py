@@ -1,8 +1,9 @@
 from flask import Flask, request
 import telebot
+import os
 
-TOKEN = "8027662725:AAEAydbYQxsA2ZbxOacgUlCzTgymzb4VBkM"
-CHANNEL_ID = -1006940287840  # ID твоего канала
+TOKEN = os.environ.get("TOKEN")  # Получаем токен из переменных окружения
+CHANNEL_ID = -1006940287840
 
 bot = telebot.TeleBot(TOKEN)
 app = Flask(__name__)
@@ -35,6 +36,7 @@ def webhook():
     if request.headers.get('content-type') == 'application/json':
         json_str = request.get_data().decode('utf-8')
         update = telebot.types.Update.de_json(json_str)
+        print(f"📩 Получен апдейт: {update}")  # Для отладки
         bot.process_new_updates([update])
         return "!", 200
     return "Not a Telegram request", 403
@@ -43,6 +45,5 @@ def webhook():
 def index():
     return 'Бот работает!', 200
 
-# 🛠️ ВАЖНО: правильный запуск Flask на Render
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
